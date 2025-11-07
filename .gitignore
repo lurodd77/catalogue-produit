@@ -1,0 +1,19 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+
+# React build
+frontend/build
+
+# Env files (ne jamais pousser)
+backend/.env
+frontend/.env
+
+# Logs
+*.log
+
+# MacOS / Windows
+.DS_Store
+Thumbs.db
