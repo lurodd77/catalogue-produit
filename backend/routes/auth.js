@@ -1,15 +1,16 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
 
-dotenv.config();
 const router = express.Router();
 
-// Route login simple
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   if (username === "admin" && password === "Root") {
+    if (!process.env.JWT_SECRET) {
+      console.error("JWT_SECRET non défini !");
+      return res.status(500).json({ message: "Problème serveur : secret manquant" });
+    }
     const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: "1h" });
     return res.json({ token });
   } else {

@@ -9,7 +9,7 @@ function Login({ setToken }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/login', { username, password });
+      const res = await axios.post('http://localhost:5000/api/auth/login', { username, password });
       setToken(res.data.token);
       localStorage.setItem('token', res.data.token); // garde le token
     } catch (err) {
